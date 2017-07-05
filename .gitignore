@@ -4,3 +4,4 @@ db.sqlite3
 
 env.py
 media
+services/templates/services_OG.html
