@@ -1,0 +1,31 @@
+{% extends "base_client.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        {% if next %}
+                            <form  style="font-family:Montserrat !important; font-size: larger; text-align: left;"   role="form" method="post" action="{% url 'login' %}?next={{ next }}">
+                        {% else %}
+                            <form  style="font-family:Montserrat !important; font-size: larger; text-align: left;" role="form" method="post" action="{% url 'login' %}">
+                        {% endif %}
+                        <h2 class="text-center">Login here</h2>
+                        {% csrf_token %}
+                        {{ form | as_bootstrap }}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary center-block"><i class="fa fa-play-circle"></i> Login
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <a href="{% url 'password_reset' %}" style="font-family: Montserrat !important;"> Or click here to reset your password</a>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base_client.html" %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+{% block head_js %}
+    <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        Stripe.publishableKey = '{{ publishable }}';
+        //]]>
+    </script>
+    <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section id="portfolio" class="bg-darkest-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h1 class="brand-heading">We are looking forward to working with you,</h1>
+                        <h3>{% if user.is_authenticated %} <em>{{ request.user.username }}</em>
+                        {% endif %}</h3>
+                        <h2>This is your Services Check Out</h2>
+                        {% for item in items %}
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <img class="img-circle team-member" width="150" height="150"
+                                             style="margin:0px !important;"
+                                             src="{{ MEDIA_URL }}{{ item.service.photo }}"><br>
+                                        <br><h6 style="color:black !important;">{{ item.service.name }}</h6>
+                                        <h4 style="color:black !important;">{{ item.quantity }} x <i
+                                                class="fa fa-eur"></i>{{ item.service.price }}</h4>
+                                        <button type="submit" class="btn btn-primary"><a
+                                                href="{% url 'remove_from_cart' item.id %}"
+                                                style="color:white !important;">Remove</a>
+                                        </button>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                </div>
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 style="color:black !important; text-align: center; margin-top: 25px;">TOTAL: <i
+                                    class="fa fa-eur"></i> {{ total }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <hr>
+                        <form role="form" method="post" id="payment-form" action="{% url 'cart' %}"
+                              style="font-family:Montserrat !important; font-size: larger; text-align: left;">
+                            <div id="credit-card-errors" style="display:none">
+                                <div class="alert-message block-message error"
+                                     id="stripe-error-message"></div>
+                            </div>
+
+
+                            <h2 style="text-align: center">Pay Here</h2>
+
+                            {% csrf_token %}
+                            {{ form | as_bootstrap }}
+                            <div class="form-group">
+                                <input class="btn btn-primary center-block" id="submit_payment_btn"
+                                       name="commit" type="submit" value="Submit Payment">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+{% endblock %}>

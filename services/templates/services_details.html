@@ -1,0 +1,68 @@
+{% extends "base_client.html" %}
+{% block content %}
+
+
+    <section id="portfolio" class="bg-darkest-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h2 style="color:black !important;">{{ services.name }}</h2>
+                                <div class="panel-body" style="color:black !important;">
+                                    <div class="row">
+                                        <div class="col-sm-6 ">
+
+                                            <img class="img-circle team-member" width="350"
+                                                 height="350"
+                                                 src="{{ MEDIA_URL }}{{ services.photo }}"><br>
+                                            <button class="btn btn-group-sm"
+                                                    onclick="location.href='{% url 'all_services' %}'">Back to all
+                                                Services
+                                            </button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h3 style="color:black !important;">Information</h3>
+                                            <p style="color:black !important; font-size:small !important; font-family:Montserrat !important;">
+                                                {{ services.description }}</p>
+                                            <h3 style="color:black !important;">Price: <i
+                                                    class="fa fa-eur"></i>{{ services.price }}*</h3><br>
+                                            <h3 style="color:black !important;">
+                                                <form method="post" action="{% url 'add_to_cart' services.id %}">
+                                                    {% csrf_token %}
+                                                    Quantity
+                                                    <input name='quantity' type="number" min="1" max="999">
+                                                    <button type="submit" class="btn btn-primary">Buy Now</button>
+                                                </form>
+                                            </h3>
+                                            <p style="color:black !important; font-size:small !important; font-family:Montserrat !important; text-align: left;">
+                                            <h5 style="color:black !important; text-align: left;">*Overall price
+                                                includes:</h4>
+                                                <ul style="color:black !important; font-size:small !important; font-family:Montserrat !important; text-align: left;">
+                                                    <li>Assessment</li>
+                                                    <li>Training Plan</li>
+                                                    <li>Nutrition Plan</li>
+                                                    <li>Onsite F2F Check Ins</li>
+                                                    <li>Assigned Personal Trainer/Coach</li>
+                                                </ul>
+                                                <br>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    {#            {% load disqus_tags %}#}
+    {#            {% set_disqus_title post.title %}#}
+    {#            {% disqus_show_comments %}#}
+
+{% endblock %}

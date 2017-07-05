@@ -1,0 +1,37 @@
+{% extends "base_client.html" %}
+
+{% block content %}
+     <section id="portfolio" class="bg-darkest-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    {#                    <div class="col-lg-8 col-lg-offset-2">#}
+                    <h2>Our Blog Site</h2>
+                    <hr>
+                    <div class="row">
+                        {% for post in posts %}
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 style="color:black !important;">{{ post.title }}</h4>
+                                    </div>
+                                    <div class="panel-body" style="color:black !important;">
+                                        <p style="color:black !important;font-family: Montserrat !important;">{{ post.content|truncatewords:15 }}</p>
+                                        <button class="btn btn-default"
+                                                onclick="location.href='{% url 'post_detail' post.id %}'">
+                                            Read More
+                                        </button>
+                                        <p style="color:black !important;font-family: Montserrat !important;">{{ post.published_date }}
+                                            |<strong>Views</strong> {{ post.views }} |
+                                            <strong>Tag</strong> {{ post.tag }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endblock %}
+
+
