@@ -1,4 +1,5 @@
 {% load static %}
+{% load gravatar %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,7 +129,7 @@
                                                     </h5>
                                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday
                                                         at 4:32 PM</p>
-                                                    <p class="small">Lorem ipsum dolor sit amet, consectetur...</p>
+                                                    <p class="small">Im Sinne der Demonstration - ein Demo Text...</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -143,7 +144,7 @@
                                                     </h5>
                                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday
                                                         at 4:32 PM</p>
-                                                    <p class="small">Lorem ipsum dolor sit amet, consectetur...</p>
+                                                    <p class="small">Im Sinne der Demonstration - ein Demo Text...</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -151,16 +152,15 @@
                                     <hr>
                                     <li class="message-footer row">
                                         <div class="col-lg-12">
-                                            <button type="button" class="btn btn-default" style="margin-left: 5px !important;"><a
+                                            <button type="button" class="btn btn-default" style="margin-left: 10px !important;"><a
                                                     href="{% url 'post_list' %}"><span
                                                     class="light"> Check Out Our Blog </span><i
                                                     class="fa fa-rss-square"></i></a></button>
-
                                             <button type="button" class="btn btn-default"><a
                                                     href="{% url 'new_post' %}"><span
                                                     class="light"> Post Here </span><i
                                                     class="fa fa-rss-square"></i></a></button>
-                                        </div>
+                                         </div>
                                     </li>
                                     {% else %}
                                     <li class="dropdown" style="background-color:#333333 !important;">
@@ -249,9 +249,6 @@
 
 <!--Contact me form -->
 <script src="/static/js/contact_me.js"></script>
-
-<!--PDF -->
-<script src="/static/js/pdf.js"></script>
 
 
 </body>

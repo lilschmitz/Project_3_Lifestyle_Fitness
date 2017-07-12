@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
     'django.contrib.sites',
+    'disqus',
+    'django_gravatar',
     'home',
+    'stripe',
     'accounts',
     'contacts',
     'profiles',
@@ -56,14 +59,16 @@ INSTALLED_APPS = [
 
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
 ]
 
 ROOT_URLCONF = 'KS_Stream_3_LifestyleFitnessCoaching.urls'
@@ -76,11 +81,15 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
+
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages'
 
             ],
         },
@@ -145,6 +154,7 @@ USE_TZ = True
 
 STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_VERSION = os.environ.get('STRIPE_VERSION')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -170,3 +180,6 @@ DEFAULT_FROM_EMAIL = 'kathrinlschmitz@example.com'
 
 # To use Django's Console email backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DISQUS_WEBSITE_SHORTNAME = 'lifestyle-fitness'
+SITE_ID = 1

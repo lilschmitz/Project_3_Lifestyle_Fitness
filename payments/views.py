@@ -1,7 +1,8 @@
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from payments.forms import MakePaymentForm
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
 from django.conf import settings
 from services.models import Service
@@ -28,7 +29,7 @@ def buy_now(request, id):
 
             if customer.paid:
                 messages.success(request, "You have successfully paid")
-                return redirect(reverse('services'))
+                return redirect(reverse('all_services'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
@@ -38,7 +39,7 @@ def buy_now(request, id):
         form = MakePaymentForm()
         service = get_object_or_404(Service, pk=id)
 
-    args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE, 'all_service': service}
+    args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE, 'services': services}
     args.update(csrf(request))
 
     return render(request, 'pay.html', args)

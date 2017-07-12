@@ -1,5 +1,7 @@
+
 from django.contrib import messages, auth
-from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
 from accounts.forms import UserRegistrationForm, UserLoginForm
 
@@ -63,6 +65,3 @@ def register(request):
     args.update(csrf(request))
 
     return render(request, 'register.html', args)
-
-
-

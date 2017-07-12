@@ -5,19 +5,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center team-member">
-                    {% if next %}
-                        <form role="form" method="post" action="{% url 'missing_profile' %}?next={{ next }}">
-                    {% else %}
-                        <form role="form" method="post" action="{% url 'missing_profile' %}?next={{ next }}">
-                    {% endif %}
                     <h2>We want to know more</h2>
 
                     <h2>You do not have a Profile with us!</h2>
                     <h3> We would like to know more please go to<br><a href="{% url 'missing_profile' %}">Profile
                         Management</a></h3>
-
                 </div>
-                </form>
             </div>
         </div>
     </section>

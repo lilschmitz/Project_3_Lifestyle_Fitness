@@ -38,42 +38,51 @@
                                         </button>
                                     </div>
                                 </div>
-                        {% endfor %}
+                    </div>
+    {% endfor %}
                 </div>
-                <div class="col-md-6 col-md-offset-3">
+
+                <div class="col-lg-4 col-lg-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 style="color:black !important; text-align: center; margin-top: 25px;">TOTAL: <i
                                     class="fa fa-eur"></i> {{ total }}</h3>
+                             <button class="btn btn-group-sm"
+                                                    onclick="location.href='{% url 'all_services' %}'">Want to add more?
+                                            </button>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <hr>
+                         <div class="col-md-6 col-md-offset-3">
+                             <hr>
+                         <h2 style="text-align: center">Pay Here</h2>
+
+
                         <form role="form" method="post" id="payment-form" action="{% url 'cart' %}"
                               style="font-family:Montserrat !important; font-size: larger; text-align: left;">
-                            <div id="credit-card-errors" style="display:none">
-                                <div class="alert-message block-message error"
-                                     id="stripe-error-message"></div>
-                            </div>
-
-
-                            <h2 style="text-align: center">Pay Here</h2>
-
                             {% csrf_token %}
                             {{ form | as_bootstrap }}
                             <div class="form-group">
                                 <input class="btn btn-primary center-block" id="submit_payment_btn"
                                        name="commit" type="submit" value="Submit Payment">
                             </div>
+                            <div id="credit-card-errors">
+        <span class="payment-errors"></span>
+
+      <div class="alert-message block-message error" id="stripe-error-message"></div>
+    </div>
                         </form>
+                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
     </section>
+
 
 {% endblock %}>

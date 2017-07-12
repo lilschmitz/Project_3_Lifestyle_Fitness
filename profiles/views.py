@@ -5,6 +5,12 @@ from profiles.forms import ProfileRegistrationForm
 from profiles.models import UserProfile
 
 
+def profile(request, template_name='profile.html'):
+    profile = UserProfile.objects.all()
+    data = {}
+    data['object_list'] = profile
+    return render(request, profile, data)
+
 @login_required(login_url='/accounts/login')
 def profile(request):
     try:
@@ -17,19 +23,18 @@ def profile(request):
         return render(request, "profile.html")
 
 
+
 # (UserProfile,user=request.user)
 @login_required(login_url='/login')
 def no_profile(request):
 
     if request.method == 'POST':
-       no_profile = UserProfile.objects.post(user=request.user)
        form = ProfileRegistrationForm()
        if form.is_valid():
-           form = ProfileRegistrationForm(request.POST)
-           if form.is_valid():
-               form.save(commit=False)
-               no_profile.user = request.user
-               no_profile.save()
+           profile = form.save(commit=False)
+           profile.user_id= request.user.id
+           profile.save()
+           return redirect('profile')
     else:
         form = ProfileRegistrationForm()
 
@@ -39,6 +44,20 @@ def no_profile(request):
     return render(request, 'no_profile.html', args)
 
 
+# form = ProfileRegistrationForm(request.POST, instance=UserProfile)
+#            if form.is_valid():
+#                form.save(commit=False)
+#            return redirect('profile')
+#     else:
+#         form = ProfileRegistrationForm()
+#
+#     args = {'form': form}
+#     args.update(csrf(request))
+#
+#     return render(request, 'no_profile.html', args)
+
+
+
 
 def missing_profile(request):
     form = ProfileRegistrationForm(request.POST)
@@ -46,10 +65,9 @@ def missing_profile(request):
     if request.method == 'POST':
         if form.is_valid():
             form = ProfileRegistrationForm(request.POST)
-            if form.is_valid():
-                missing_profile = form.save(commit=False)
-                missing_profile.user = request.user
-                missing_profile.save()
+            missing_profile = form.save(commit=False)
+            missing_profile.user = request.user
+            missing_profile.save()
 
         return redirect(render(request, "profile.html"))
     else:
