@@ -15,8 +15,8 @@
                     {% endif %}
 
                     <a href="/users" ><img title="profile image"
-                                                                               class="img-circle img-responsive" style="max-height: inherit !important;" src="
-                        {{ MEDIA_URL }}{{ user.userprofile.photo }}"></a>
+                                                                               class="img-circle img-responsive" style="max-height: inherit !important;"
+                                           src= "{{ MEDIA_URL }}{{ user.profile.photo }}"></a>
                 </div>
                 <div class="col-sm-6">
                     <h1>{{ request.user.username }}</h1>
@@ -27,7 +27,7 @@
                                     <div class="panel-body" style="color:black !important;"><strong>Full
                                         Name:</strong> {{ user.first_name }} {{ user.last_name }}</div>
                                     <div class="panel-body" style="color:black !important;"><strong>Starting
-                                        Weight:</strong> {{ user.userprofile.weight }}</div>
+                                        Weight:</strong> {{ user.profile.weight }}</div>
                                     <div class="panel-body" style="color:black !important;"><strong>BMI:</strong> </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                 <div class="panel-body">
                         <div class="panel panel-default">
                             <div class="panel-heading"><strong>Fitness Goals</strong></div>
-                            <div class="panel-body" style="color:black !important;"> {{ user.userprofile.goals }}</div>
+                            <div class="panel-body" style="color:black !important;"> {{ user.profile.goals }}</div>
                         </div>
                     </div>
 

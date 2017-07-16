@@ -11,7 +11,7 @@ class ProfileRegistrationForm(forms.ModelForm):
 
 
     def save(self, commit=True):
-        instance = super(ProfileRegistrationForm, self).save(commit=True)
+        instance = super(ProfileRegistrationForm, self).save(commit=False)
 
         if commit:
             instance.save()

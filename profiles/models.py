@@ -8,7 +8,7 @@ from django.db import models
 # Create your models here.
 class UserProfile(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     height = models.IntegerField(blank=True, null=True)
     weight = models.IntegerField(blank=True, null=True)
     goals = models.TextField(blank=True, null=True)

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from models import Service
-from django.core.context_processors import csrf
+from django.template.context_processors import csrf
 
 
 
