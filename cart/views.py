@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from .models import CartItem
 from django.contrib.auth.decorators import login_required
 from services.models import Service
-from payments.forms import MakePaymentForm
+from .forms import MakePaymentForm
 from django.template.context_processors import csrf
 from django.contrib import messages
 from django.conf import settings

@@ -37,7 +37,7 @@ def buy_now(request, id):
 
     else:
         form = MakePaymentForm()
-        service = get_object_or_404(Service, pk=id)
+        services = get_object_or_404(Service, pk=id)
 
     args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE, 'services': services}
     args.update(csrf(request))
