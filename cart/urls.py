@@ -7,3 +7,5 @@ urlpatterns = [
     url(r'^remove/(?P<id>\d+)', remove_from_cart, name='remove_from_cart')
 
 ]
+
+

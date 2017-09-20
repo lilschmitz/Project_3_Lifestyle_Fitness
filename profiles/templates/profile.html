@@ -14,9 +14,12 @@
                           {% else %}                      <form role="form" method="post" action="{% url 'profile' %}">
                     {% endif %}
 
-                    <a href="/users" ><img title="profile image"
-                                                                               class="img-circle img-responsive" style="max-height: inherit !important;"
-                                           src= "{{ MEDIA_URL }}{{ user.profile.photo }}"></a>
+                    <a href="/profile/update" ><small><img title="Updates?"
+                                                                               class="btn btn-default btn-lg img-responsive" style="width: 160px;
+  height: 160px;
+  border-radius: 50%;
+margin-top:20px;"
+                                           src= "{{ MEDIA_URL }}{{ user.profile.photo }}"></small></a>
                 </div>
                 <div class="col-sm-6">
                     <h1>{{ request.user.username }}</h1>

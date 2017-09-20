@@ -31,6 +31,7 @@ from cart import urls as cart_urls
 from payments import urls as payments_urls
 
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', get_index, name='index'),

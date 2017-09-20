@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os
+import os.path
 import env
 # import dj_database_url => once POSTGRES set up
 
@@ -67,6 +67,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 
 ]
@@ -86,8 +87,7 @@ TEMPLATES = [
             'django.template.context_processors.request',
             'django.contrib.auth.context_processors.auth',
             'django.template.context_processors.media',
-            'django.contrib.messages.context_processors.messages',
-
+            'django.contrib.messages.context_processors.messages'
             ],
         },
     },
@@ -153,12 +153,21 @@ STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_VERSION = os.environ.get('STRIPE_VERSION')
 
+
+#TRYING DJstripe see for documentation https://github.com/dj-stripe/dj-stripe
+
+# STRIPE_LIVE_PUBLIC_KEY = os.environ.get("STRIPE_LIVE_PUBLIC_KEY", "<your publishable key>")
+# STRIPE_LIVE_SECRET_KEY = os.environ.get("STRIPE_LIVE_SECRET_KEY", "<your secret key>")
+# STRIPE_TEST_PUBLIC_KEY = os.environ.get('STRIPE_TEST_PUBLIC_KEY')
+# STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
+# STRIPE_LIVE_MODE = False
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, "static")
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = ( os.path.join('static'), )
 
 #Configuration of the media route for uploads
 

@@ -8,6 +8,7 @@ from django.conf import settings
 from services.models import Service
 import stripe
 
+
 stripe.api_key = settings.STRIPE_SECRET
 
 

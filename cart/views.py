@@ -1,12 +1,13 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.core.urlresolvers import reverse
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+
 from .models import CartItem
 from django.contrib.auth.decorators import login_required
 from services.models import Service
-from .forms import MakePaymentForm
+from payments.forms import MakePaymentForm
 from django.template.context_processors import csrf
 from django.contrib import messages
 from django.conf import settings
+
 import stripe
 
 
@@ -31,7 +32,7 @@ def user_cart(request):
                     description=request.user.email,
                     card=form.cleaned_data['stripe_id'],
                 )
-            except (stripe.error.CardError, e):
+            except stripe.error.CardError, e:
                 messages.error(request, "Your card was declined!")
 
             if customer.paid:
@@ -82,5 +83,31 @@ def remove_from_cart(request, id):
     CartItem.objects.get(id=id).delete()
     return redirect(reverse('cart'))
 
+
+
+
+
+@login_required(login_url="/accounts/login")
+def add_to_cart(request, id):
+    service = get_object_or_404(Service, pk=id)
+    quantity = int(request.POST.get('quantity'))
+
+    try:
+        cartItem = CartItem.objects.get(user=request.user, service=service)
+        cartItem.quantity += quantity
+    except CartItem.DoesNotExist:
+        cartItem = CartItem(
+            user=request.user,
+            service=service,
+            quantity=quantity
+        )
+
+    cartItem.save()
+    return redirect(reverse('cart'))
+
+
+def remove_from_cart(request, id):
+    CartItem.objects.get(id=id).delete()
+    return redirect(reverse('cart'))
 
 
