@@ -26,8 +26,9 @@ def user_cart(request):
         form = MakePaymentForm(request.POST)
         if form.is_valid():
             try:
+                # service = get_object_or_404(Service, pk=id)
                 customer = stripe.Charge.create(
-                    amount=int(total * 100),
+                    amount=int(total*100),
                     currency="EUR",
                     description=request.user.email,
                     card=form.cleaned_data['stripe_id'],
@@ -38,7 +39,7 @@ def user_cart(request):
             if customer.paid:
                 messages.success(request, "You have successfully paid")
                 CartItem.objects.filter(user=request.user).delete()
-                return redirect(reverse('all_services'))
+                return redirect(reverse('successful_purchase'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
@@ -87,27 +88,6 @@ def remove_from_cart(request, id):
 
 
 
-@login_required(login_url="/accounts/login")
-def add_to_cart(request, id):
-    service = get_object_or_404(Service, pk=id)
-    quantity = int(request.POST.get('quantity'))
 
-    try:
-        cartItem = CartItem.objects.get(user=request.user, service=service)
-        cartItem.quantity += quantity
-    except CartItem.DoesNotExist:
-        cartItem = CartItem(
-            user=request.user,
-            service=service,
-            quantity=quantity
-        )
-
-    cartItem.save()
-    return redirect(reverse('cart'))
-
-
-def remove_from_cart(request, id):
-    CartItem.objects.get(id=id).delete()
-    return redirect(reverse('cart'))
 
 

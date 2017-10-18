@@ -6,7 +6,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    {#                    <div class="col-lg-8 col-lg-offset-2">#}
                     <h2>Services</h2>
                     <hr>
                     <div class="row">
@@ -21,7 +20,7 @@
                                                 src="{{ MEDIA_URL }}{{ service.photo }}"><br><br>
                                             <h4 style="color:black !important;">{{ service.name }}</h4>
                                             <p style="color:black !important; font-size:small !important; font-family:Montserrat !important;">
-                                                {{ service.description |truncatewords:15 }}<br>
+                                                {{ service.description |truncatewords:12 }}<br>
                                                 <button class="btn btn-group-sm"
                                                         onclick="location.href='{% url 'services_detail' service.id %}'">
                                                     Read More

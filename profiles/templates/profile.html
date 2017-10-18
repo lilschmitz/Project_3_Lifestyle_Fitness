@@ -14,12 +14,12 @@
                           {% else %}                      <form role="form" method="post" action="{% url 'profile' %}">
                     {% endif %}
 
-                    <a href="/profile/update" ><small><img title="Updates?"
+                    <a href="/profile/" style="margin-top:20px;" ><img title=""
                                                                                class="btn btn-default btn-lg img-responsive" style="width: 160px;
   height: 160px;
   border-radius: 50%;
 margin-top:20px;"
-                                           src= "{{ MEDIA_URL }}{{ user.profile.photo }}"></small></a>
+                                           src= "{{ MEDIA_URL }}{{ user.profile.photo }}"></a>
                 </div>
                 <div class="col-sm-6">
                     <h1>{{ request.user.username }}</h1>

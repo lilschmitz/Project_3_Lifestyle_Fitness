@@ -24,7 +24,7 @@ def profile(request):
 
 
 @login_required(login_url='/login')
-def no_profile(request):
+def no_profile(request, id):
 
     if request.method == 'POST':
        form = ProfileRegistrationForm()

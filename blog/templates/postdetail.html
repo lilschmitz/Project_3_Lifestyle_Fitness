@@ -27,7 +27,12 @@
                     {% endif %}
 
                                 <p style="font-family: Montserrat !important;">{{ post.published_date }} | <strong>Views</strong> {{ post.views }} |
-                                    <strong>Tag</strong> {{ post.tag }}</p>
+                                    <strong>Tag</strong> {{ post.tag }} |
+                                            <strong> {{ post.author }} </strong></p>
+
+                     <button class="hidden" onclick="location.href='{% url 'edit_post' post.id %}'">
+                                    Edit
+                                </button>
                                                          <p style="font-family: Montserrat !important;"> {% load disqus_tags %}
     {% set_disqus_title post.title %}
     {% disqus_show_comments %}</p>

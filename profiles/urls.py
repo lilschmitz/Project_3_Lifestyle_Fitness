@@ -8,4 +8,7 @@ urlpatterns = [
     url(r'^$', profile, name='profile'),
     url(r'^create/$', no_profile, name='no_profile'),
     url(r'^update/$', missing_profile, name='missing_profile'),
+
 ]
+
+

@@ -7,7 +7,11 @@ Django offers the full array for this full stack development project authenticat
 
 # Site Outline 
 
-The scenerio chosen is a lifestyle and fitness website for an imaginary company named 'Life is Fitness' with the logo 'LF'. The overall colour scheme is black and white and gray scales to purvey a level of sophistication and strength that a client is expecting of the industry and company. The site's key functionality is client account management, a blog, where the logged in client can post and interact and a store, where the logged in client can purchase services utilising stripe integration. The client can proceed to create a profile with more details about himself/herself and a photo, which is stored in the backend. The 'cart' will store the last chosen product in the backend and will display it if user navigates away or logs out.
+The scenario chosen is a lifestyle and fitness website for an imaginary company named 'Life is Fitness' with the logo 'LF'.<br/>
+The overall colour scheme is black and white and gray scales to purvey a level of sophistication and strength,<br/> that a client is expecting of the industry and company.<br/> 
+The site's key functionality is client account management, a blog,<br/> where the logged in client can post and interact and a store, <br/> where the logged in client can purchase services utilising stripe integration. 
+The client can proceed to create a profile with more details about himself/herself and a photo, which is stored in the backend.<br/>
+The 'cart' will store the last chosen product in the backend and will display it if user navigates away or logs out.<br/>
 
 ## LANDING PAGE
 
@@ -44,16 +48,19 @@ This navbar same as the top right one is static and is referring to the sections
 
 ### Welcome Section 
 
+Screenshot availabe here: 
 [Welcome Section](https://www.dropbox.com/s/zwg0k96fiq1yn0r/Screenshot%202017-09-14%2013.22.56.png?dl=0)
 
 ### Welcome Section when logged in 
 
+Screenshot availabe here: 
 [Welcome Section when logged in](https://www.dropbox.com/s/79zcmwvujifhxlx/Screenshot%202017-09-14%2013.45.06.png?dl=0)
 
 The Welcome section changes to include the user's username when the user is logged in. Each section has a downward facing arrow button at the end of the section, which is a navigation button and allows to jump to the next section.
 
-## Carousel Section as part of the Welcome Section
+### Carousel Section as part of the Welcome Section
 
+Screenshot availabe here: 
 [Welcome Section Carousel](https://www.dropbox.com/s/mm36m0kevbv2vxf/Screenshot%202017-09-15%2014.29.15.png?dl=0)
 
 This 'Carousel' functionality is a display of two of the overall 6 services and a message and link to the blog site. 
@@ -90,34 +97,36 @@ This is a sort of 'narrative'/'background' info section with 4 paragraphs ordere
 ### Fourth Section TEAM
 
 Screenshot availabe here: 
-[Third Section TEAM](https://www.dropbox.com/s/qm8uj97rr2r526w/Screenshot%202017-09-14%2013.24.17.png?dl=0)
+[Fourth Section TEAM](https://www.dropbox.com/s/qm8uj97rr2r526w/Screenshot%202017-09-14%2013.24.17.png?dl=0)
 
 This section is a simple outline of a fictictious team of trainers, nutritionist etc. The names chosen are real-life people, but who would not work together. There is the option to link the fontawesome icons underneath each profile to social media accounts. 
 
 ### Fifth Section CALENDAR
 
-Screenshot availabe here: 
-[Third Section CALENDAR expanded](https://www.dropbox.com/s/j75ugamzvo8f4fd/Screenshot%202017-09-14%2013.24.32.png?dl=0)
+Screenshots availabe here:
 
-[Third Section CALENDAR collapsed](https://www.dropbox.com/s/skt8lfxlc14c6rh/Screenshot%202017-09-14%2013.24.42.png?dl=0)
+[Fifth Section CALENDAR expanded](https://www.dropbox.com/s/j75ugamzvo8f4fd/Screenshot%202017-09-14%2013.24.32.png?dl=0)
+
+[Fifth Section CALENDAR collapsed](https://www.dropbox.com/s/skt8lfxlc14c6rh/Screenshot%202017-09-14%2013.24.42.png?dl=0)
 
 This is a real google calendar - using a demo account- that has fictitious events scheduled. In this instance training sessions with clients. The calendar is collapsable. Future development would seek to integrate the Google calendar API instead of an html based integration, in order to be able to provide scheduling option and interaction. See more under future developement header.
 
 ### Sixth Section CONTACT
 
 Screenshot availabe here: 
-[Third Section CONTACT](https://www.dropbox.com/s/61ycvzxf8ub0slf/Screenshot%202017-09-14%2013.24.49.png?dl=0)
+[Sixth Section CONTACT](https://www.dropbox.com/s/61ycvzxf8ub0slf/Screenshot%202017-09-14%2013.24.49.png?dl=0)
 
 A contact form which is not linked to an email account in the backend yet. This is part of future development. Nor is this linked to the database as a form here. The focus in the development effort was other functionality. See future development header for more details.
 
 
-### FOOTER and ADVERTS/SPONSORS
+### Footer and Adverts/Sponsors
 
 Screenshot availabe here: 
 [FOOTER and ADVERTS/SPONSORS](https://www.dropbox.com/s/vb2h0oufobb29uf/Screenshot%202017-09-14%2013.24.56.png?dl=0)
 
 The images displayed are real fitness companies and are linked to the respective sites. 
 
+### Further Pages 
 
 ### REGISTRATION / ACCOUNTS
 
@@ -130,12 +139,12 @@ This can be accessed via the 'register' link in the top right navigation bar dro
 
 [Page with link to Profile Management page](https://www.dropbox.com/s/xcy2zoqah7r7kf2/Screenshot%202017-09-15%2015.23.44.png?dl=0)
 
-## Update/Create Profile Page
+#### Update/Create Profile Page
 [Profile Management page - update/create](https://www.dropbox.com/s/7mx87tmsjtil5rj/Screenshot%202017-09-15%2015.28.35.png?dl=0)
 
 This is a form that stores data of user in backend DB. 'Height', 'Weight', 'Goals' and 'Photo'.
 
-## Profile Page
+#### Profile Page
 [Profile Page - part 1](https://www.dropbox.com/s/00wj3tb4bmb1k5j/Screenshot%202017-09-15%2015.30.49.png?dl=0)
 
 
@@ -146,7 +155,7 @@ This page displays the created profile, which is retrieved based on the database
 The profile page has three boxes - 'profile', 'fitness goals' and 'physique & check in posts' - see part 2 screenshot for this. Future development would seek to create an update of this page, where the client can update the third section with 'photos' of himself/herself and a short check in message in order to report progress.
 
 
-### PASSWORD RESET
+#### PASSWORD RESET
 
 [Password reset link below login screen page](https://www.dropbox.com/s/bgwbw82i1nxla7b/Screenshot%202017-09-15%2015.47.01.png?dl=0)
 
@@ -157,7 +166,7 @@ The profile page has three boxes - 'profile', 'fitness goals' and 'physique & ch
 [Confirmation Page Message screen](https://www.dropbox.com/s/7xkx6wuz6u1zyf9/Screenshot%202017-09-15%2015.52.32.png?dl=0)
 
 
-### STORE 
+### STORE = SERVICES
 
 
 [Store Page/ Services Page - part 1](https://www.dropbox.com/s/ej0rco37dcnleoz/Screenshot%202017-09-15%2016.08.04.png?dl=0)
@@ -184,46 +193,8 @@ A subset from DONORS ORG was downloaded as a csv and then stored in MongoDB in a
 
 [Project Structure](https://www.dropbox.com/s/hvd0plj1hfq5vok/Screenshot%202017-09-13%2013.23.23.png?dl=0)
 
-Overall project name "DV_USA_Donations_KS"
-holds: 
-## - static
-
-### - css
-    - custom.css => custom styling to adjust layout/height/etc
-
-### - geojson
-    - us-states.json
-
-### - js
-    - graph.js => Python code for the graphs that use dc and d3 methods to instantiate the graphs and ultimately render them in html using id and class references
-      See below for detailed outline! 
 
 
-## - lib
-   ### - css
-       - bootstrap.min.css
-       - dc.css
-       - introjs.css
-       - jquery.dynatable.css
-       - keen-dashboards.css
-
-   ### - js
-       - d3.js
-       - dc.js
-       - intro.js
-       - jquery.js
-       - jquery.dynatable.js
-       - keen.min.js
-       - queue.js
-
- ## - templates
-       - index.html => core HTML one pager that outlines the elements of the dashboard which is complemented by the plug ins in css/js for keen dashboards, jquery dynatable js and css, bootstrap and ultimately the d3 dc for the graph visualizations based on jquery and crossfilter backend code.
-
-## - school_donations.py
- => python code that sets up the app route, connection, data call, field import 
-
-## - fix_usa_ids.py 
-=> fixer python script to correct error in geojson for us-states
 
 ## - requirements.txt 
 => outline of all technology used as pre-req for deployment
@@ -232,50 +203,9 @@ holds:
  
 
 
-## Detailed graph.js OUTLINE 
-
-The first lines of code to line 15 are the function to call current date and is not actually part of the instantiation of the graph code. 
-
-Starting from line 17 onwards the json format call of the data is queued so are the graphs. The function call starts off from line 22 with outlining all the required variables including parsing and data cleansing/transforming before the crossfilter instance is initiated. The key to the interactivity of all the graphs created further on. 
-
-Next section is creating dimensions based on the datapoints available. Each dimension is linked to a datapoint and crossfilter.
-
-Now the actual manipulation of the data can begin - where grouping/totaling of dimensions created is returned as a specific variable. Min and max date ranges are defined and a select drop down as well as a record filter count that is pushed to html using typescript.
-
-Next up the charts are defined as dc type charts and tied to html ids. 
-
-Each chart is consequently defined with respective d3 class attributes.
-
-It is important to point out that two charts require extended plug in calls and calls. 
-The US map requires a geojson overlay - calling a geojson file 'us-states.json' and the type of projection is defined as well, which is an Albers projection. There are different projection options out there and you can see more in the references. Mike Bostock has created a myriad of outstanding examples to go by. 
-
-The data table is powered by the DynaTable plug in which is essentially a jquery based plug in that allows for feature embedding like a dynamic search, ascending & descending filter options, paging, drop down data subset selection. All of these are very difficult to create with just using dc and d3. 
-*Personally I had tried to use DataTable.js and it has not been straight forward to integrate at all for me, hence after weeks and weeks of failing to do so I went with Dynatable. 
-
-
 
 ## Technology Stack 
 
-### [DC.js](https://dc-js.github.io/dc.js/) 
-As per DC.js org "a javascript charting library with native crossfilter support, allowing highly efficient exploration on large multi-dimensional datasets"
-
-### [D3.js](https://d3js.org/) 
-D3 or Data-Driven Documents is a JavaScript library for producing Dynamic, interactive data visualizations in web browsers.
-
-### [Keen.js](https://github.com/keen) 
-Keen IO has a subset of functionality/code as per its library that supports dynamic dashboards. 
-
-### [Queue.js](https://github.com/d3/d3-queue) 
-"A queue evaluates zero or more deferred asynchronous tasks with configurable concurrency" quote from the d3 github outline and explanation.
-
-### [Crossfilter.js](http://square.github.io/crossfilter/) 
-Is a JavaScript library for exploring large multivariate datasets in the browser.
-
-### [Intro.js](http://introjs.com/) 
-Is a JavaScript library that allows for embedding an interactive demo guide for an HTML page.
-
-### [Dynatable.js](https://www.dynatable.com/) 
-Is a semantic, interactive table plugin using jQuery, HTML5, and JSON.
 
 ### [Bootrstap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) 
 A front-end framework allowing to dynamically code html pages.
@@ -286,9 +216,6 @@ A high-level general-purpose programming language.
 ### [Javascript](https://www.javascript.com/) 
 An object-oriented computer programming language commonly used to create interactive effects within web browsers.
 
-### [JQuery](https://jquery.com/)
-A fast, small, and feature-rich JavaScript library.
-
 ### [HTML](https://www.w3schools.com/html/) 
 Hypertext Markup Language, a standardized system for tagging text files to achieve font, colour, graphic, and hyperlink effects on World Wide Web pages.
 
@@ -297,9 +224,6 @@ Cascading Style Sheets - a language for describing the presentation of Web pages
 
 ### [Fontawesome](http://fontawesome.io/)
 Is a font and icon toolkit based on CSS and LESS. 
-
-### [Flask](http://flask.pocoo.org/) 
-A python microframework to run, manage, develop in.
  
 ### [MongoDB](https://www.mongodb.com/) 
 A non relational database "document database with the scalability and flexibility that you want with the querying and indexing that you need" as per MongoDBs website.
@@ -323,11 +247,7 @@ This project is licensed under the MIT License
 
 # References
 
-[Mike Bostock on Bl.ocks](https://bl.ocks.org/mbostock)
 
-[Techslides 1000 Examples for D3/DC](http://techslides.com/over-1000-d3-js-examples-and-demos)
-
-[Christophe Viau's List](http://christopheviau.com/d3list/)
 
 # Further Development 
 

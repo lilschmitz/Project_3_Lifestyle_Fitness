@@ -23,3 +23,8 @@ def services_detail(request, id):
 
     return render(request, ('services_details.html', context_dict), {'services': services})
 
+def successful_purchase(request):
+    services = Service.objects.all()
+    context_dict = {}
+    context_dict.update(csrf(request))
+    return render(request, ('successful_purchase.html', context_dict), {'services': services})
