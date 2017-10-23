@@ -9,8 +9,8 @@
                 <div class="col-lg-12 text-center">
                     <div class="col-lg-8 col-lg-offset-2">
                         <h1>Thank you!</h1>
-                        <h2>You have successfully purchased our Services.</h2>
-                        <div><h2> <em>{{ request.user.username }} </em> </h2><br> <p style="font-family: Montserrat !important;">We will get in touch to schedule your appointments with us!<br> If you would like to buy more: <button type="button" class="btn btn-default btn-lg"> <a href="{% url 'all_services' %}"><span class="light"> Go Shopping </span><i
+                        <h2>You have successfully purchased our Services,</h2>
+                        <div><h2><em>{{ request.user.username }}</em> </h2><br> <p style="font-family: Montserrat !important;">We will get in touch to schedule your appointments with us!<br> If you would like to buy more:<br/> <button type="button" class="btn btn-default btn-lg"> <a href="{% url 'all_services' %}"><span class="light"> Go Shopping </span><i
                                 class="fa fa-shopping-cart"></i></a></button>{% if user.is_authenticated %}{% endif %}</p></div>
                     </div>
                 </div>

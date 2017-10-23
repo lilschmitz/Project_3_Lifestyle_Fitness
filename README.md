@@ -7,9 +7,9 @@ Django offers the full array for this full stack development project authenticat
 
 # Site Outline 
 
-The scenario chosen is a lifestyle and fitness website for an imaginary company named 'Life is Fitness' with the logo 'LF'.<br/>
-The overall colour scheme is black and white and gray scales to purvey a level of sophistication and strength,<br/> that a client is expecting of the industry and company.<br/> 
-The site's key functionality is client account management, a blog,<br/> where the logged in client can post and interact and a store, <br/> where the logged in client can purchase services utilising stripe integration. 
+The scenario chosen is a lifestyle and fitness website for an imaginary company named 'Life is Fitness' with the logo 'LF'.
+The overall colour scheme is black and white and gray scales to purvey a level of sophistication and strength, that a client is expecting of the industry and company.
+The site's key functionality is client account management, a blog,<br/> where the logged in client can post and interact and a store, where the logged in client can purchase services utilising stripe integration. <br/>
 The client can proceed to create a profile with more details about himself/herself and a photo, which is stored in the backend.<br/>
 The 'cart' will store the last chosen product in the backend and will display it if user navigates away or logs out.<br/>
 
@@ -130,6 +130,7 @@ The images displayed are real fitness companies and are linked to the respective
 
 ### REGISTRATION / ACCOUNTS
 
+Screenshot availabe here: 
 [REGISTRATION](https://www.dropbox.com/s/i21rl5oyslj42qa/Screenshot%202017-09-15%2015.20.41.png?dl=0)
 
 This can be accessed via the 'register' link in the top right navigation bar drop down. This leads to an online form which is linked to the back end database. Once the registration is submitted the user is logged in and the side changes to a message with a link to the 'profiles' related pages. Here the user can complement his/her initial account information with more details. See next header 'Profiles' for more details. 
@@ -137,14 +138,19 @@ This can be accessed via the 'register' link in the top right navigation bar dro
 
 ### PROFILES
 
+Screenshot availabe here: 
 [Page with link to Profile Management page](https://www.dropbox.com/s/xcy2zoqah7r7kf2/Screenshot%202017-09-15%2015.23.44.png?dl=0)
 
 #### Update/Create Profile Page
+
+Screenshot availabe here: 
 [Profile Management page - update/create](https://www.dropbox.com/s/7mx87tmsjtil5rj/Screenshot%202017-09-15%2015.28.35.png?dl=0)
 
 This is a form that stores data of user in backend DB. 'Height', 'Weight', 'Goals' and 'Photo'.
 
 #### Profile Page
+
+Screenshot availabe here: 
 [Profile Page - part 1](https://www.dropbox.com/s/00wj3tb4bmb1k5j/Screenshot%202017-09-15%2015.30.49.png?dl=0)
 
 
@@ -168,44 +174,98 @@ The profile page has three boxes - 'profile', 'fitness goals' and 'physique & ch
 
 ### STORE = SERVICES
 
-
+Screenshot availabe here: 
 [Store Page/ Services Page - part 1](https://www.dropbox.com/s/ej0rco37dcnleoz/Screenshot%202017-09-15%2016.08.04.png?dl=0)
 
 [Store Page/ Services Page - part 2](https://www.dropbox.com/s/13a4hdquis0svf8/Screenshot%202017-09-15%2016.08.12.png?dl=0)
 
+Screenshot availabe here: 
 [Store Page/Services - detailed view](https://www.dropbox.com/s/yizexd186j90z0p/Screenshot%202017-09-15%2016.08.28.png?dl=0)
+
+This page part 1 and part 2 show the available 6 services for purchase. Each can be viewed in detailed to see more description etc, which is captured in the detailed view screenshot.
+
+### CART = PAYMENTS
+
 
 
 ### BLOG
 
+Screenshot availabe here: 
+[Blog Page - part 1](https://www.dropbox.com/s/y5l4vx8gb2cttm7/Screenshot%202017-10-18%2014.06.50.png?dl=0)
 
+This page shows a summary of all blogposts by different users. 
 
+Screenshot availabe here: 
+[Blog Page - detailed post view logged in user](https://www.dropbox.com/s/b0dqlr43i6hql4q/Screenshot%202017-10-18%2014.07.25.png?dl=0)
+
+This is a detailed view of a blogpost by user that is currently logged in, which shows an edit button beside the button that allows user to navigate back to the summary page. 
+Also a disqus powered comment functionality is embedded below each detailed blogpost.
+
+Screenshot availabe here: 
+[Blog Page - detailed post view posted from different user other than the logged in](https://www.dropbox.com/s/5538p86y6mwjxw2/Screenshot%202017-10-18%2014.08.06.png?dl=0)
+
+This is a detailed view of a blogpost is from a different user and not the logged in user, which only displays button that allows user to navigate back to the summary page. There is no edit functionality for this user - restricted authorization.
+Also a disqus powered comment functionality is embedded below each detailed blogpost.
+
+Screenshot availabe here: 
+[Blog Page - create post form](https://www.dropbox.com/s/b0dqlr43i6hql4q/Screenshot%202017-10-18%2014.07.25.png?dl=0)
+
+This is a form that allows to submit a blogpost or to decide not to, which navigates the user back to the summary page.
 
 # Built || Technology 
 
 
-## Database 
+# Front End 
+
+In merging two Bootstrap Templates the front-end landing page was designed uniquely to the project. The two templates that have been merged are: 
+
+Link to template here: 
+[Grayscale](https://blackrockdigital.github.io/startbootstrap-grayscale/)
+
+Link to template here: 
+[Agency](https://blackrockdigital.github.io/startbootstrap-agency/)
+
+
+The motivation in the merge was to create a comprehensive customised landing page and lead the clients onto further pages that are essentially powered by the backend app functionality- like blog, profile and services.
+
+# Database 
 
 A subset from DONORS ORG was downloaded as a csv and then stored in MongoDB in a JSON format which is called in the Heroku deployment using mLab MongoDB.
 
 ## Project Structure 
 
+Screenshot availabe here: 
+[Project Structure](https://www.dropbox.com/s/t1sgs9bhvzlebpg/Screenshot%202017-10-23%2013.53.15.png?dl=0)
 
-[Project Structure](https://www.dropbox.com/s/hvd0plj1hfq5vok/Screenshot%202017-09-13%2013.23.23.png?dl=0)
+#### KS_Stream_3_LifestyleFitnessCoaching
 
+- KS_Stream_3_LifestyleFitnessCoaching
+- accounts
+- blog
+- cart
+- contacts
+- profiles
+- services
+- home
+- payments
+- media
+- static
+- templates
 
+#### manage.py 
+Procfile
 
-
-## - requirements.txt 
-=> outline of all technology used as pre-req for deployment
-## - README.md 
+#### README.md
 => explanation of the project, its structure, its technology, how to deploy it etc
- 
+#### requirements.txt
+=> outline of all technology used as pre-req for deployment
 
 
 
 ## Technology Stack 
 
+### [Django](https://www.djangoproject.com/) 
+A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
 
 ### [Bootrstap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) 
 A front-end framework allowing to dynamically code html pages.
@@ -234,7 +294,7 @@ PaaS a platform as a service and integrative hosting site.
 
 # Deployment
 
-This site is hosted here using Heroku [Project 2 KSchmitz US Donations Dashboard](https://ksdv-usa-dons.herokuapp.com/)
+This site is hosted here using Heroku []()
 
 
 # Authors 
@@ -251,5 +311,4 @@ This project is licensed under the MIT License
 
 # Further Development 
 
-Smoothing out sizing transitions in regards to layout for drop down and first row. Set up a csv export for the datatable. Adding more dynamic number displays, maybe create a detailed view with more pages. Potentially incorporate social media stream data in relation to the school donations etc. A CRUD functionality and user administration/authorization functionality to manage different data level views. 
-
+The blog preview on the landing page is currently not displaying the latest blogpost of the signed in user (but refers to the signed in user name). The embedded calendar is not an API call to Google Calendar, which will be the attempted next development stage, in order to enable online booking request (which would also utilise Google Mail)and facilitate scheduling. The profile of a registered user should ultimately allow for editing and posting of physique updates as part of a 'check-in' process. There would also be an idea to embed MyFitnessPal so that there is a section under profile that shows the 'macros' and 'exercise' of the client, which is very important in measurement of the progress of the client for the fitness coach/personal trainer. Furthermore the currently set up payment app should become a backend for subscription to services, whereas cart and the services/store only allows for transactional purchases. The fitness coach/personal trainer would benefit from a accounts based summary view of the clients, their check ins, profile details etc and purchases as a central admin view.  
