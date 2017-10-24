@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os.path
 import env
-# import dj_database_url => once POSTGRES set up
+# => once POSTGRES set up else comment out import  dj_database_url
+import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +33,9 @@ DEBUG = os.environ.get('DEBUG', False)
 
 
 # Heroku hosting configurations !!!
-ALLOWED_HOSTS = ['lifestylefitnesscoaching.heroku.com']
+ALLOWED_HOSTS = ['lifestylefitnesscoaching.heroku.com', '127.0.0.1']
+INTERNAL_IPS = ['127.0.0.1']
+
 
 
 # Application definition
@@ -96,16 +100,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'KS_Stream_3_LifestyleFitnessCoaching.wsgi.application'
 
+# below would be commented out if running app local in Pycharm without Heroku
+DATABASES={'default':dj_database_url.parse(os.environ.get('DATABASE_URL')) }
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# COMMENT out the sqlite backends once deploying to HEROKU
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 
 
 # Password validation
@@ -170,13 +179,19 @@ STRIPE_VERSION = os.environ.get('STRIPE_VERSION')
 # https://warehouse.python.org/project/whitenoise/
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = ( os.path.join('static'), )
+
+# Commented out below for static and media in order to run Heroku deployment using AWS S3
+
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = ( os.path.join('static'), )
 
 #Configuration of the media route for uploads
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = '/media/'
+# Commented out below for static and media in order to run Heroku deployment using AWS S3
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# MEDIA_URL = '/media/'
+
 
 
 
@@ -191,3 +206,27 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DISQUS_WEBSITE_SHORTNAME = 'lifestyle-fitness'
 SITE_ID = 1
+
+
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_HOST ='s3-eu-west-1.amazonaws.com'
+
+
+#below creates a custom domain/subdirectory static storage loaction in the storage bucket
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'Cache-Control': 'max-age=94608000',
+    }
