@@ -49,6 +49,7 @@ pyOpenSSL==17.3.0
 pyparsing==2.2.0
 python-doc-inherit==0.3.0
 pytz==2017.2
+redis==2.10.6
 requests==2.18.4
 requests-oauthlib==0.8.0
 rsa==3.4.2
