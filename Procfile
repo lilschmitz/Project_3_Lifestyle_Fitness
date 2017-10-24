@@ -1,5 +1,5 @@
 
-web: gunicorn KS_Stream_3_LifestyleFitnessCoaching:application
+web: gunicorn KS_Stream_3_LifestyleFitnessCoaching.wsgi:application
 
 
 
