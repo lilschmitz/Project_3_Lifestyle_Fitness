@@ -31,7 +31,7 @@ DEBUG = os.environ.get('DEBUG', False)
 
 
 # Heroku hosting configurations !!!
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [lifestylefitnesscoaching.herokuapp.com]
 
 
 # Application definition
