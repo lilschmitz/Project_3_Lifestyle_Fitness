@@ -19,7 +19,6 @@ from home.views import get_index
 # from django.views.static import serve
 # from .settings import MEDIA_ROOT
 
-
 from django.conf.urls import url, include
 
 
