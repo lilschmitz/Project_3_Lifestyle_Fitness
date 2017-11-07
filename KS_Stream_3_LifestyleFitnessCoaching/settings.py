@@ -33,7 +33,7 @@ DEBUG = os.environ.get('DEBUG', True)
 
 
 # Heroku hosting configurations !!!
-ALLOWED_HOSTS = ['lifestylefitnesscoaching.heroku.com', '127.0.0.1']
+ALLOWED_HOSTS = ['lifestylefitnesscoaching.herokuapp.com', '127.0.0.1']
 INTERNAL_IPS = ['127.0.0.1']
 
 
