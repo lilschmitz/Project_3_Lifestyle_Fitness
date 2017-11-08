@@ -33,7 +33,7 @@ def user_cart(request):
                     description=request.user.email,
                     card=form.cleaned_data['stripe_id'],
                 )
-            except stripe.error.CardError, e:
+            except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
 
             if customer.paid:
