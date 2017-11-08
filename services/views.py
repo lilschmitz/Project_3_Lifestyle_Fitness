@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from models import Service
+from services.models import Service
 from django.template.context_processors import csrf
 
 
