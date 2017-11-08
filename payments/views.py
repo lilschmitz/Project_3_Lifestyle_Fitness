@@ -7,6 +7,7 @@ from django.template.context_processors import csrf
 from django.conf import settings
 from services.models import Service
 
+
 import stripe
 
 
@@ -27,7 +28,7 @@ def buy_now(request, id):
                     description=request.user.email,
                     card=form.cleaned_data['stripe_id'],
                 )
-            except stripe.error.CardError, e:
+            except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
 
             if customer.paid:
