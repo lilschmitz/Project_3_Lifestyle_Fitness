@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import profile, no_profile, missing_profile
+from profiles.views import profile, no_profile, missing_profile
 
 
 

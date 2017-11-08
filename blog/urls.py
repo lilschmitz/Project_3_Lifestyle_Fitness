@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import post_list, post_detail, new_post, edit_post
+from blog.views import post_list, post_detail, new_post, edit_post
 
 urlpatterns = [
     url(r'^posts/$', post_list, name='post_list'),
