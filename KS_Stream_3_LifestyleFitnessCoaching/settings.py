@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os.path
-# import env
+import env
 # => once POSTGRES set up else comment out import  dj_database_url
 import dj_database_url
 
@@ -102,7 +102,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'KS_Stream_3_LifestyleFitnessCoaching.wsgi.application'
 
-# below would be commented out if running app local in Pycharm without Heroku
+# # below would be commented out if running app local in Pycharm without Heroku
 DATABASES = {'default':dj_database_url.parse(os.environ.get('DATABASE_URL')) }
 
 # Database
