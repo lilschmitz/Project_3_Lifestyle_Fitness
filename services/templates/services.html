@@ -20,8 +20,8 @@
                                                 src="{{ MEDIA_URL }}{{ service.photo }}"><br><br>
                                             <h4 style="color:black !important;">{{ service.name }}</h4>
                                             <p style="color:black !important; font-size:small !important; font-family:Montserrat !important;">
-                                                {{ service.description |truncatewords:12 }}<br>
-                                                <button class="btn btn-group-sm"
+                                                {{ service.description |truncatewords:12 }}<br><br>
+                                                <button class="btn btn-group-sm" style="background-color: lightgray !important;"
                                                         onclick="location.href='{% url 'services_detail' service.id %}'">
                                                     Read More
                                                 </button>

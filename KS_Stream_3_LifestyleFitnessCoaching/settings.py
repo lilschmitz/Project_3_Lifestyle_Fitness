@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os.path
-import env
+import os
+# import env
 # => once POSTGRES set up else comment out import  dj_database_url
 import dj_database_url
 
@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production! =>  has been configured as part of configurations
 DEBUG = os.environ.get('DEBUG', True)
-
+USE_S3 = os.environ.get('USE_S3', False)
 
 # Heroku hosting configurations !!!
 ALLOWED_HOSTS = ['lifestylefitnesscoaching.herokuapp.com', '127.0.0.1']
@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'disqus',
     'django_gravatar',
+    'fixture_magic',
+    'natural_key_cache',
     'home',
     'stripe',
     'accounts',
@@ -73,10 +75,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
-
-
 ]
 
 ROOT_URLCONF = 'KS_Stream_3_LifestyleFitnessCoaching.urls'
@@ -84,14 +82,16 @@ ROOT_URLCONF = 'KS_Stream_3_LifestyleFitnessCoaching.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
 
             'django.template.context_processors.debug',
             'django.template.context_processors.request',
+            'django.template.context_processors.tz',
+            'django.template.context_processors.i18n',
             'django.contrib.auth.context_processors.auth',
             'django.template.context_processors.media',
             'django.contrib.messages.context_processors.messages'
@@ -103,12 +103,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'KS_Stream_3_LifestyleFitnessCoaching.wsgi.application'
 
 # # below would be commented out if running app local in Pycharm without Heroku
-DATABASES = {'default':dj_database_url.parse(os.environ.get('DATABASE_URL')) }
+# DATABASES={'default':dj_database_url.parse(os.environ.get('DATABASE_URL')) }
+
+
+
+
+
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 # COMMENT out the sqlite backends once deploying to HEROKU
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'))
+}
+
 
 # DATABASES = {
 #     'default': {
@@ -159,6 +169,34 @@ USE_TZ = True
 
 
 
+#Configuration of the media route for uploads
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = ( os.path.join('static'), )
+
+
+if USE_S3:
+    AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'Cache-Control': 'max-age=94608000',
+    }
+
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+    MEDIAFILES_LOCATION = 'media'
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+    STATICFILES_LOCATION = 'static'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+
+
 #STRIPE
 
 STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE_KEY')
@@ -182,17 +220,10 @@ STRIPE_VERSION = os.environ.get('STRIPE_VERSION')
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-# Commented out below for static and media in order to run Heroku deployment using AWS S3
 
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = ( os.path.join('static'), )
 
-#Configuration of the media route for uploads
 
-# Commented out below for static and media in order to run Heroku deployment using AWS S3
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-# MEDIA_URL = '/media/'
 
 
 
@@ -210,25 +241,11 @@ DISQUS_WEBSITE_SHORTNAME = 'lifestyle-fitness'
 SITE_ID = 1
 
 
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_HOST ='s3-eu-west-1.amazonaws.com'
+# AWS_S3_HOST ='s3-eu-west-1.amazonaws.com'
 
 
 #below creates a custom domain/subdirectory static storage loaction in the storage bucket
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+# STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
 
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIAFILES_LOCATION = 'media'
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
-AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
-        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-        'Cache-Control': 'max-age=94608000',
-    }
