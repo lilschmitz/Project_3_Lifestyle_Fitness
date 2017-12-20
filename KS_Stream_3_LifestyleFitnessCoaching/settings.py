@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-import env
+# import env
 # => once POSTGRES set up else comment out import  dj_database_url
 import dj_database_url
 
