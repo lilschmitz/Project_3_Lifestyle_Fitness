@@ -51,8 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'disqus',
     'django_gravatar',
-    'fixture_magic',
-    'natural_key_cache',
     'home',
     'stripe',
     'accounts',
