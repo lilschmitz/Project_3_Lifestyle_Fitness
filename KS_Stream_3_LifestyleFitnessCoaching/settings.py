@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-import env
+# import env
 # => once POSTGRES set up else comment out import  dj_database_url
 import dj_database_url
 
@@ -194,7 +194,7 @@ if USE_S3:
     STATICFILES_LOCATION = 'static'
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
-    # print(MEDIA_URL)
+    print(MEDIA_URL)
 
 #STRIPE
 
@@ -245,6 +245,4 @@ SITE_ID = 1
 
 #below creates a custom domain/subdirectory static storage loaction in the storage bucket
 # STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-
-
 
