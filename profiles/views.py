@@ -5,7 +5,7 @@ from profiles.forms import ProfileRegistrationForm
 from profiles.models import UserProfile
 
 
-def profile(request, template_name='profile.html'):
+def profile(request):
     profile = UserProfile.objects.all()
     data = {}
     data['object_list'] = profile
