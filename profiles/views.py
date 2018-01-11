@@ -60,7 +60,7 @@ def missing_profile(request):
     args = {'form': form}
     args.update(csrf(request))
 
-    return render(request,"missing_profile.html", args)
+    return render(request,'no_profile.html', args)
 
 
 
