@@ -8,8 +8,8 @@ from profiles.models import UserProfile
 @login_required(login_url='/accounts/login')
 def profile(request):
     try:
-       # profile = get_object_or_404(pk=request.user_id)
-       profile = UserProfile.objects.get(user=request.user)
+       UserProfile = get_object_or_404(pk=request.user_id)
+       #  profile = UserProfile.objects.get(user=request.user)
     except:
        UserProfile.DoesNotExist
        return render(request, "no_profile.html")
