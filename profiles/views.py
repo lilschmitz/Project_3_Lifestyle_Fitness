@@ -5,15 +5,10 @@ from profiles.forms import ProfileRegistrationForm
 from profiles.models import UserProfile
 
 
-def profile(request):
-    profile = UserProfile.objects.all()
-    data = {}
-    data['object_list'] = profile
-    return render(request, profile, data)
-
 @login_required(login_url='/accounts/login')
 def profile(request):
     try:
+       # profile = get_object_or_404(pk=request.user_id)
        profile = UserProfile.objects.get(user=request.user)
     except:
        UserProfile.DoesNotExist
@@ -22,17 +17,19 @@ def profile(request):
         return render(request, "profile.html")
 
 
-
+# (UserProfile,user=request.user)
 @login_required(login_url='/login')
-def no_profile(request, id):
+def no_profile(request):
 
     if request.method == 'POST':
+       no_profile = UserProfile.objects.post(user=request.user)
        form = ProfileRegistrationForm()
        if form.is_valid():
-           profile = form.save(commit=False)
-           profile.user_id= request.user.id
-           profile.save()
-           return redirect('profile')
+           form = ProfileRegistrationForm(request.POST)
+           if form.is_valid():
+               form.save(commit=False)
+               no_profile.user = request.user
+               no_profile.save()
     else:
         form = ProfileRegistrationForm()
 
@@ -48,12 +45,13 @@ def missing_profile(request):
 
     if request.method == 'POST':
         if form.is_valid():
-            form = ProfileRegistrationForm(request.POST, request.FILES)
-            missing_profile = form.save(commit=False)
-            missing_profile.user = request.user
-            missing_profile.save()
+            form = ProfileRegistrationForm(request.POST)
+            if form.is_valid():
+                missing_profile = form.save(commit=False)
+                missing_profile.user = request.user
+                missing_profile.save()
 
-        return render(request, "profile.html")
+        return redirect(render(request, "profile.html"))
     else:
         form = ProfileRegistrationForm()
 
@@ -61,6 +59,4 @@ def missing_profile(request):
     args.update(csrf(request))
 
     return render(request,"missing_profile.html", args)
-
-
 
