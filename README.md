@@ -1,4 +1,4 @@
-# Project_3_Lifestyle_Fitness
+# Lifestyle_Fitness
 
 This project is a full stack - front to backend development exercise that utilizes Django "a high-level Python Web framework that encourages rapid development and clean, pragmatic design". It full stack front to back, because it is loading data entered front-end into a sql lite db and returns it if requested. 
 
